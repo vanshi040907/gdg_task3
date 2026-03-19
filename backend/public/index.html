@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="alreado"></div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        async function cartoon() {
+        const res = await fetch("/photo");
+        const allphotos = await res.json();
+        allphotos.forEach((p)=>  {
+
+      
+        const boxalreado = document.getElementById("alreado");
+        const boxchildalreado = document.createElement("div");
+        const heart = document.createElement("button");
+        const label = document.createElement("label");
+        const form = document.createElement("form");
+       
+        
+        
+            const image = document.createElement("img");
+            image.src = `/uploads/${p.photofilename}`;
+            console.log( image.src);
+            image.style.width ="300px";
+            
+            
+            
+            
+            heart.className="buttonclass";
+            heart.id=p.photofilename;
+            heart.type="button";
+           /* form.method = "post";
+            form.action =`/upvote/${p.photofilename}`;
+            heart.type="submit";
+
+            */
+
+
+            
+            boxchildalreado.appendChild(image);
+             boxchildalreado.appendChild(form);
+            form.appendChild(heart);
+            form.appendChild(label);
+            boxalreado.appendChild(boxchildalreado);
+
+             async function princess() {
+                const btn1 = document.getElementById(p.photofilename);
+                const res =await fetch(`/upvoteshow/${p.photofilename}`);
+                const vote = await res.json();
+                btn1.textContent= vote.count;
+            
+            }
+            princess();
+            
+            heart.addEventListener("click",async () => {
+               const res =  await fetch(`/upvote/${p.photofilename}`,{method : "post",credentials: "include"});
+               if (res.status===401) {
+                 window.location.href = "/login"
+               }
+            });
+ });
+           
+
+          
+       
+        }
+        cartoon();
+          
+    </script>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="uploadedphoto">
+        <button type="submit" id ="send">share memory</button>
+
+    </form>
+    <div id="photobooth"></div>
+
+
+    <script>
+      
+
+        
+       
+        const sendbtn = document.getElementById("send");
+        
+                
+            socket.on('photofile',(photo)=> {
+            console.log(photo);
+            const box = document.getElementById("photobooth");
+            const boxchild = document.createElement("div");
+            
+
+
+            const heart = document.createElement("button");
+            const label = document.createElement("label");
+            const form = document.createElement("form");
+            const image = document.createElement("img");
+            image.src = `/uploads/${photo}`;
+            console.log(image.src);
+            image.style.width ="300px";
+            heart.className="buttonclass";
+            heart.id=photo;
+            heart.type="button";
+
+           /* form.method = "post";
+            form.action =`/upvote/${photo}`;
+            heart.type="submit";*/
+
+            boxchild.appendChild(image);
+            boxchild.appendChild(form);
+            form.appendChild(heart);
+            form.appendChild(label);
+
+            box.appendChild(boxchild);
+           async function prince() {
+                const btn1 = document.getElementById(photo);
+                const res =await fetch(`/upvoteshow/${photo}`);
+                const vote = await res.json();
+                btn1.textContent= vote.count;
+            
+            }
+            prince();
+                  
+            heart.addEventListener("click",async () => {
+                const res =  await fetch(`/upvote/${photo}`,{method : "post",credentials: "include"});
+               if (res.status===401) {
+                 window.location.href = "/login"
+               }
+            });
+           
+           
+        })
+        socket.on('count',(x)=> {
+                console.log(x);
+                const btn = document.getElementById(x.id);
+                btn.textContent = x.count;
+             })
+        
+        
+    </script>
+   
+    
+    
+</body>
+</html>
