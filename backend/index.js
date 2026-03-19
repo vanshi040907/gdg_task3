@@ -1,37 +1,46 @@
-const path = require("path");
 const express = require("express");
+const path = require("path");
+const cookieparser = require("cookie-parser");
+const {restrictToLoggedInUserOnly,identifypersonWhoUpvote}= require("./middleware/auth.js");
+
 const app = express();
-const port = 8000;
-const multer = require("multer");
+const http = require("http");
+const{Server} = require("socket.io");
+const {connectmongoose} = require('./connection.js');
+const photoroute = require("./routes/photo.js");
+const userroute = require("./routes/user.js");
+const loginroute = require("./routes/login.js");
+const server = http.createServer(app);
+const io = new Server(server);
+connectmongoose("mongodb://127.0.0.1:27017/imageapp");
 
-const storage = multer.diskStorage({
-   destination:function(req,file,cb) {
-    return cb(null,'./uploads');
-   },
-   filename:function(req,file,cb) {
-    return cb(null,`${Date.now()}-${file.originalname}`);
-   }
-});
-const upload = multer({storage});
 
-app.set("view engine","ejs");
-app.set("views",path.resolve("./views"));
+app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-app.use(express.static("./uploads"));
+app.use(express.static( path.resolve("./public")));
+app.use(cookieparser());
 
-app.get("/",(req,res)=> {
-    return res.render("homepage",{image:null});
-});
-app.post("/red",upload.single("image"),(req,res)=> {
-    console.log(req.body);
-    console.log(req.file);
-    return res.render("homepage",{image:req.file.filename});
-
+app.use("/uploads", express.static(path.resolve("./uploads")));
+app.use((req,res,next)=>{
+    req.io = io;
+    next();
 });
 
 
+app.use("/",identifypersonWhoUpvote,photoroute);
+
+app.use("/signin",userroute);
+app.use("/login",loginroute);
+app.get('/',(req,res)=> {
+    return res.sendFile("./public/index.html");
+});
+
+ io.on('connection',(socket)=> {
+    
+   console.log("new user to share");
+
+});
 
 
 
-
-app.listen(port,console.log("server is running"));
+server.listen(1111,console.log("server started!!"));
