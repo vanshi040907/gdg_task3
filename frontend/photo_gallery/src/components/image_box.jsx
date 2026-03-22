@@ -1,4 +1,5 @@
 import "../css/image_box.css"
+
 function Image_box(x){
     function onFavouriteClick(){
         alert("clicked");
