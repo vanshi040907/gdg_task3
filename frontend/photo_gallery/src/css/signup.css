@@ -1,0 +1,56 @@
+.signup-page {
+    height: 100vh;
+
+
+}
+
+
+.overlay {
+
+    width: 100%;
+
+
+
+    display: flex;
+    justify-content: center;
+
+}
+
+.signup-container {
+    margin-top: 100px;
+    width: 320px;
+    padding: 40px;
+
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+
+    text-align: center;
+    color: white;
+}
+
+.signup-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.signup-container input {
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+
+
+.signup-container button {
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+
+    background: black;
+    color: white;
+    cursor: pointer;
+}
