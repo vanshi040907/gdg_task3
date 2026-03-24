@@ -9,7 +9,7 @@ import Gallery from "./pages/gallery.jsx";
 
 function App() {
   return (
-    <div>
+    <>
       <Header />
       <main>
         <Routes>
@@ -20,7 +20,7 @@ function App() {
         </Routes>
       </main>
       {/* <Footer /> */}
-    </div>
+    </>
   )
 }
 
