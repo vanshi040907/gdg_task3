@@ -11,15 +11,6 @@ function Header() {
                     <div className="tag">capturing memories</div>
                 </div>
 
-                <div className="search-container">
-                    <input
-                        type="text"
-                        placeholder="Search..."
-                        className="search-input"
-                    />
-
-                </div>
-
                 <div className="login">log in</div>
 
             </div>

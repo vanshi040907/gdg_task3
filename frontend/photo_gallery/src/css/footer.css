@@ -1,0 +1,11 @@
+.footer{
+    width:100vw;
+    background-image: linear-gradient(to right, rgb(20, 20, 56), rgb(66, 1, 66), rgb(65, 1, 1));
+    min-height: 50px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 10vh;
+}
