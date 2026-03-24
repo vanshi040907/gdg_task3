@@ -8,21 +8,14 @@ function Home() {
         <>
             <div className='pic'>
                 <div className="home">
-
                     <h1 className='welcome'>Welcome to Gallery</h1>
                     <p>Explore beautiful memories captured in photos.</p>
-
                 </div>
                 <div className='wrapper'>
                     <div className="login">
                         <Link to="/login" className="navlink">Log in</Link></div>
                 </div>
             </div>
-
-
-
-
-
         </>
 
     )

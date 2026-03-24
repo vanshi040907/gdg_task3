@@ -1,5 +1,6 @@
 import "../css/image_box.css"
 import myImage from '../assets/IMAGE_11.jpeg';
+
 function Image_box(){
     function onFavouriteClick(){
         alert("clicked");

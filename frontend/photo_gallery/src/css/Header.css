@@ -1,19 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&display=swap');
 
-
-
 .header {
     margin: 0;
     padding: 0;
     margin-bottom: 2vh;
-
     display: flex;
     justify-content: space-around;
     align-items: center;
-
     border-bottom: 2px ridge white;
-
-
+    background-image: linear-gradient(to right, rgb(20, 20, 56), rgb(66, 1, 66), rgb(65, 1, 1));
 }
 
 .name {
@@ -22,24 +17,14 @@
     color: white;
     font-size: 55px;
     font-weight: 600;
-
     border-radius: 10px;
-
 }
 
 .tag {
-
     font-weight: bolder;
     font-size: 18px;
     color: grey;
 }
 
-.login {
 
-    font-weight: bolder;
-    font-size: 18px;
-    padding: 2px;
-
-    height: fit-content;
-}
 

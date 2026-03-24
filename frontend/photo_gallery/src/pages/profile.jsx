@@ -1,9 +1,12 @@
 import React from 'react'
-
-function profile() {
+import Footer from '../components/footer.jsx'
+function Profile() {
     return (
+        <>
         <div>profile</div>
+        <Footer />
+        </>
     )
 }
 
-export default profile
+export default Profile

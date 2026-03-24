@@ -4,14 +4,11 @@
     font-size: 25px;
     padding: 10px;
     border-radius: 15px;
-
-
 }
 
 .welcome {
     font-size: 70px;
     color: white;
-
 }
 
 p {
@@ -30,10 +27,7 @@ p {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0.5)),
         url("../assets/pic.png");
-
     background-size: contain;
-
-
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -44,7 +38,6 @@ p {
 }
 
 a {
-
     text-decoration: none;
 }
 

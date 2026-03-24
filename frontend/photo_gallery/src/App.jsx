@@ -4,9 +4,9 @@ import { Routes, Route } from 'react-router-dom'
 import Home from "./pages/home.jsx"
 import Favorites from './pages/favorites.jsx';
 import Login_page from './pages/login_page.jsx';
-import Footer from './components/footer.jsx';
 import Gallery from "./pages/gallery.jsx";
 import Signup_page from './pages/signup_page.jsx';
+import Profile from './pages/profile.jsx';
 
 function App() {
   return (
@@ -19,9 +19,9 @@ function App() {
           <Route path='/favorites' element={<Favorites />} />
           <Route path='/gallery' element={<Gallery />} />
           <Route path='/signup' element={<Signup_page />} />
+          <Route path='/profile' element={<Profile />} />
         </Routes>
       </main>
-      <Footer />
     </>
   )
 }
