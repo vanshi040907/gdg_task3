@@ -9,4 +9,15 @@
     width: 100%;
     z-index: 1000;
     height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 10vw, 0;
+    
+}
+
+.btn{
+    height: 5vh;
+    width: auto;
+    background-color: aliceblue;
 }
