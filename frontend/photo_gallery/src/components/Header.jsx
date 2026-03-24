@@ -9,12 +9,10 @@ function Header() {
             <div className="header">
 
                 <div className="logo">
-                    <div className="name">Gallery</div>
+                    <Link to="/" className="navlink"><div className="name">Gallery</div></Link>
                     <div className="tag">capturing memories</div>
                 </div>
 
-                <div className="login">
-                    <Link to="/login" className="navlink">log in</Link></div>
 
             </div>
         </>

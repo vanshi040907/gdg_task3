@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "../css/login.css";
 
 function Login_page() {
+    const navigate = useNavigate();
+
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -13,6 +17,8 @@ function Login_page() {
         console.log("Password:", password);
 
         alert("Login Successful!");
+
+        navigate("/gallery");
     };
 
     return (

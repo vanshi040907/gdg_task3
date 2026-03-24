@@ -5,6 +5,7 @@ import Home from "./pages/home.jsx"
 import Favorites from './pages/favorites.jsx';
 import Login_page from './pages/login_page.jsx';
 import Footer from './components/footer.jsx';
+import Gallery from "./pages/gallery.jsx";
 
 function App() {
   return (
@@ -15,9 +16,10 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login_page />} />
           <Route path='/favorites' element={<Favorites />} />
+          <Route path='/gallery' element={<Gallery />} />
         </Routes>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
