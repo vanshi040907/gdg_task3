@@ -43,3 +43,7 @@
 .login-card button:hover {
     background: #333;
 }
+
+.signup {
+    margin-top: 15px;
+}
