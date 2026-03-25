@@ -9,7 +9,7 @@
     <div id="alreado"></div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        const socket = io();
+        const socket = io("http://10.17.1.216:1111");
         async function cartoon() {
         const res = await fetch("/photo");
         const allphotos = await res.json();

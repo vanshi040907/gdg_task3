@@ -11,7 +11,12 @@ const photoroute = require("./routes/photo.js");
 const userroute = require("./routes/user.js");
 const loginroute = require("./routes/login.js");
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server,{
+    cors: {
+        origin: "*", 
+        methods: ["GET", "POST"]
+    }
+});
 connectmongoose(process.env.MONGODB_URI);
 
 
