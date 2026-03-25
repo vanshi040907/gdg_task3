@@ -1,13 +1,13 @@
 import "../css/favorites.css"
 import Image_box from "../components/image_box";
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import Footer from '../components/footer.jsx';
 
-function Favorite(){
+function Favorite() {
     return (
         <>
-           <div>welcome</div>
-           <Footer /> 
+            <div>Favorites</div>
+            <Footer />
         </>
     )
 }
