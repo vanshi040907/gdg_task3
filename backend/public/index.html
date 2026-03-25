@@ -9,7 +9,7 @@
     <div id="alreado"></div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        const socket = io();
+        const socket = io("http://10.17.1.216:1111");
         async function cartoon() {
         const res = await fetch("/photo");
         const allphotos = await res.json();
@@ -25,7 +25,7 @@
         
         
             const image = document.createElement("img");
-            image.src = `/uploads/${p.photofilename}`;
+            image.src = `${p.photofilename}`;
             console.log( image.src);
             image.style.width ="300px";
             
@@ -51,15 +51,16 @@
 
              async function princess() {
                 const btn1 = document.getElementById(p.photofilename);
-                const res =await fetch(`/upvoteshow/${p.photofilename}`);
+                const res =await fetch(`/upvoteshow/${encodeURIComponent(p.photofilename)}`);
                 const vote = await res.json();
+                console.log(vote);
                 btn1.textContent= vote.count;
             
             }
             princess();
             
             heart.addEventListener("click",async () => {
-               const res =  await fetch(`/upvote/${p.photofilename}`,{method : "post",credentials: "include"});
+               const res =  await fetch(`/upvote/${encodeURIComponent(p.photofilename)}`,{method : "post",credentials: "include"});
                if (res.status===401) {
                  window.location.href = "/login"
                }
@@ -101,7 +102,7 @@
             const label = document.createElement("label");
             const form = document.createElement("form");
             const image = document.createElement("img");
-            image.src = `/uploads/${photo}`;
+            image.src = `${photo}`;
             console.log(image.src);
             image.style.width ="300px";
             heart.className="buttonclass";
@@ -120,7 +121,7 @@
             box.appendChild(boxchild);
            async function prince() {
                 const btn1 = document.getElementById(photo);
-                const res =await fetch(`/upvoteshow/${photo}`);
+                const res =await fetch(`/upvoteshow/${encodeURIComponent(photo)}`);
                 const vote = await res.json();
                 btn1.textContent= vote.count;
             
@@ -128,7 +129,7 @@
             prince();
                   
             heart.addEventListener("click",async () => {
-                const res =  await fetch(`/upvote/${photo}`,{method : "post",credentials: "include"});
+                const res =  await fetch(`/upvote/${encodeURIComponent(photo)}`,{method : "post",credentials: "include"});
                if (res.status===401) {
                  window.location.href = "/login"
                }

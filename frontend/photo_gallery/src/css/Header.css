@@ -4,10 +4,11 @@
     margin: 0;
     padding: 0;
     margin-bottom: 2vh;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 1);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-bottom: 2px ridge white;
+    /* border-bottom: 2px ridge white; */
     background-image: linear-gradient(to right, rgb(20, 20, 56), rgb(66, 1, 66), rgb(65, 1, 1));
 }
 
@@ -25,6 +26,3 @@
     font-size: 18px;
     color: grey;
 }
-
-
-
