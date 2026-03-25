@@ -3,12 +3,12 @@ const User= require('../models/user');
 const Upvote= require('../models/upvote');
 
 const cloudinary = require("cloudinary").v2;
-
+require('dotenv').config();
   cloudinary.config({ 
-        cloud_name: 'dkau0yjwe', 
-        api_key: '815865897166141', 
-        api_secret: 'IQ21_FD-K_5CjPqYwG18eNyXZR8' 
-    });
+    cloud_name: process.env.CLOUDINARY_NAME, 
+    api_key: process.env.CLOUDINARY_API_KEY, 
+    api_secret: process.env.CLOUDINARY_API_SECRET 
+});
 
 
 

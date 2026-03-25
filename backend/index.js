@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const cookieparser = require("cookie-parser");
 const {restrictToLoggedInUserOnly,identifypersonWhoUpvote}= require("./middleware/auth.js");
-
+require('dotenv').config();
 const app = express();
 const http = require("http");
 const{Server} = require("socket.io");
@@ -11,8 +11,13 @@ const photoroute = require("./routes/photo.js");
 const userroute = require("./routes/user.js");
 const loginroute = require("./routes/login.js");
 const server = http.createServer(app);
-const io = new Server(server);
-connectmongoose("mongodb://127.0.0.1:27017/imageapp");
+const io = new Server(server,{
+    cors: {
+        origin: "*", 
+        methods: ["GET", "POST"]
+    }
+});
+connectmongoose(process.env.MONGODB_URI);
 
 
 app.use(express.json());
