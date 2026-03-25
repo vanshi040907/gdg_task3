@@ -1,5 +1,5 @@
-.footer{
-    width:100vw;
+.footer {
+    width: 100vw;
     background-image: linear-gradient(to right, rgb(20, 20, 56), rgb(66, 1, 66), rgb(65, 1, 1));
     min-height: 50px;
     position: fixed;
@@ -12,10 +12,12 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-left: 10vw, 0; 
+    padding-left: 10vw, 0;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 1);
+
 }
 
-.btn{
+.btn {
     height: 5vh;
     width: auto;
     background-color: aliceblue;
