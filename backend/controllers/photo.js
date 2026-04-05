@@ -10,16 +10,19 @@ require('dotenv').config();
     api_secret: process.env.CLOUDINARY_API_SECRET 
 });
 
-
-
 async function handlephotoupload(req,res) {
+    console.log("enter");
   try{
     const filename = req.file.filename;
     const filepath = req.file.path;
     const cloudinaryresponse = await cloudinary.uploader.upload(filepath,{
         folder:"cloud_folder"
     })
+       
+    console.log(req.file);
     console.log(cloudinaryresponse);
+    
+    
     /*await Photo.create ({
         photofilename: filename,
     
@@ -33,7 +36,7 @@ async function handlephotoupload(req,res) {
     req.io.emit('photofile',cloudinaryresponse.secure_url );
    
      
-    return res.redirect("/");
+    return res.json({success:true});
 }
 catch (error) {
         console.error("Upload failed:", error);
@@ -54,20 +57,17 @@ if(!photoheart.peopleupvote.includes(req.user._id)) {
     photoheart.peopleupvote.push(req.user._id);
     await photoheart.save();
 
+}else{
+     photoheart.peopleupvote.pop(req.user._id);
+     await photoheart.save();
 }
-
-        
        req.io.emit('count',{
                    id: id,
                    count: photoheart.peopleupvote.length
 
                      });      
-    
 
        return res.json({Success:true});
-    
-    
-
 }
 
 async function handleupvoteshow(req,res) {

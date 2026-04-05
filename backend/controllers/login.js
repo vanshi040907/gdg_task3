@@ -16,10 +16,7 @@ async function handleuserlogin(req,res) {
 
 
    return res.redirect("/"); 
-    
-   
+     
 }
-
-
 
 module.exports = {handleuserlogin};

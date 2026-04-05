@@ -11,15 +11,17 @@ const photoroute = require("./routes/photo.js");
 const userroute = require("./routes/user.js");
 const loginroute = require("./routes/login.js");
 const server = http.createServer(app);
-const io = new Server(server,{
+const cors = require("cors");
+/*const io = new Server(server,{
     cors: {
         origin: "*", 
         methods: ["GET", "POST"]
     }
-});
-connectmongoose(process.env.MONGODB_URI);
+});*/
+const io = new Server(server)
+connectmongoose("mongodb://127.0.0.1:27017/imageapp");
 
-
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(express.static( path.resolve("./public")));

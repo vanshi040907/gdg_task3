@@ -2,18 +2,27 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../css/login.css";
-
+import axios from "axios"
 function Login_page() {
     const navigate = useNavigate();
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Username:", username);
+        console.log("email", email);
         console.log("Password:", password);
         alert("Login Successful!");
-        navigate("/gallery");
+        axios.post("http://localhost:1111/login/enter" ,{
+            email: email,
+            password: password
+        })
+             .then(res => navigate("/gallery"))
+             .catch(err => console.log(err));
+
+
+        
+          
     };
 
     return (
@@ -22,16 +31,18 @@ function Login_page() {
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit}>
                     <input
-                        type="text"
-                        placeholder="Username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        type="email"
+                        placeholder="email"
+                        value={email}
+                        name="email"
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                     <input
                         type="password"
                         placeholder="Password"
                         value={password}
+                        name="password"
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
