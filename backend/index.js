@@ -3,6 +3,8 @@ const path = require("path");
 const cookieparser = require("cookie-parser");
 const {restrictToLoggedInUserOnly,identifypersonWhoUpvote}= require("./middleware/auth.js");
 require('dotenv').config();
+
+//const PORT = process.env.PORT || 1111;
 const app = express();
 const http = require("http");
 const{Server} = require("socket.io");
@@ -10,16 +12,26 @@ const {connectmongoose} = require('./connection.js');
 const photoroute = require("./routes/photo.js");
 const userroute = require("./routes/user.js");
 const loginroute = require("./routes/login.js");
-const server = http.createServer(app);
 const cors = require("cors");
+const server = http.createServer(app);
+<<<<<<< HEAD
+const cors = require("cors");
+=======
+>>>>>>> 72a971131dc4bf16fa90a10d983e72c3373d5561
 /*const io = new Server(server,{
     cors: {
         origin: "*", 
         methods: ["GET", "POST"]
     }
 });*/
+<<<<<<< HEAD
 const io = new Server(server)
 connectmongoose("mongodb://127.0.0.1:27017/imageapp");
+=======
+const io =new Server(server);
+connectmongoose("mongodb://127.0.0.1:27017/imageapp");
+
+>>>>>>> 72a971131dc4bf16fa90a10d983e72c3373d5561
 
 app.use(cors())
 app.use(express.json());
