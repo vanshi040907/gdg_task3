@@ -19,9 +19,9 @@ This project focuses on seamless state synchronization across multiple clients u
     * **Profile Page**: Manage your account and view your personal contributions.
 
 ### **Real-Time Mechanics**
-* [cite_start]**Live Syncing**: When User A upvotes a post, User B sees the number jump immediately without refreshing the page[cite: 4].
-* [cite_start]**Milestone Rewards**: When an image hits **3 upvotes**, it triggers a visual "pop" or animation and the background of the image card changes to highlight its popularity[cite: 5].
-* [cite_start]**Race Condition Prevention**: Backend logic ensures that simultaneous clicks from multiple users increment the database correctly using transactions[cite: 8].
+**Live Syncing**: When User A upvotes a post, User B sees the number jump immediately without refreshing the page.
+**Milestone Rewards**: When an image hits **3 upvotes**, it triggers a visual "pop" or animation and the background of the image card changes to highlight its popularity.
+**Race Condition Prevention**: Backend logic ensures that simultaneous clicks from multiple users increment the database correctly using transactions.
 
 ---
 
@@ -29,12 +29,12 @@ This project focuses on seamless state synchronization across multiple clients u
 
 ### **Frontend**
 * **React & Vite**: For a fast, modern development experience and efficient rendering.
-* [cite_start]**Socket.io-client**: Enables the bidirectional event-based communication for real-time updates[cite: 7].
+**Socket.io-client**: Enables the bidirectional event-based communication for real-time updates.
 * **CSS**: Custom styling for responsive layouts and milestone animations.
 
 ### **Backend**
-* [cite_start]**Node.js & Express**: Scalable server architecture[cite: 6].
-* [cite_start]**Socket.io**: To broadcast upvotes to everyone currently looking at the gallery[cite: 7].
+**Node.js & Express**: Scalable server architecture.
+* **Socket.io**: To broadcast upvotes to everyone currently looking at the gallery.
 * **Multer & Cloudinary**: For handling image uploads and cloud-based storage.
 * **MongoDB (Local)**: NoSQL database for storing user profiles, image metadata, and upvote counts.
 
@@ -84,6 +84,6 @@ This project focuses on seamless state synchronization across multiple clients u
 
 ## 🛠️ Architecture Highlights
 
-* [cite_start]**Socket Integration**: The server listens for upvote events and uses `Socket.io` to broadcast changes to all active tabs or browsers[cite: 7].
+**Socket Integration**: The server listens for upvote events and uses `Socket.io` to broadcast changes to all active tabs or browsers.
 * **Visual States**: Images with 3 likes utilize specific CSS classes to trigger animations and background transitions.
 * **Persistence**: All "likes" are stored in the database, ensuring that the Favorites page correctly displays only the images a particular person has upvoted.
