@@ -43,7 +43,7 @@ This project focuses on seamless state synchronization across multiple clients u
 
 1.  **Clone the repository**:
     ```bash
-    git clone [https://github.com/your-username/real-time-gallery.git](https://github.com/your-username/real-time-gallery.git)
+    git clone [https://github.com/vanshi040907/gdg_task3.git]
     cd real-time-gallery
     ```
 
