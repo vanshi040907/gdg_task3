@@ -21,7 +21,6 @@ This project focuses on seamless state synchronization across multiple clients u
 ### **Real-Time Mechanics**
 **Live Syncing**: When User A upvotes a post, User B sees the number jump immediately without refreshing the page.
 **Milestone Rewards**: When an image hits **3 upvotes**, it triggers a visual "pop" or animation and the background of the image card changes to highlight its popularity.
-**Race Condition Prevention**: Backend logic ensures that simultaneous clicks from multiple users increment the database correctly using transactions.
 
 ---
 
@@ -62,8 +61,8 @@ This project focuses on seamless state synchronization across multiple clients u
 3.  **Environment Setup**:
     Create a `.env` file in the `server` directory:
     ```env
-    PORT=5000
-    MONGO_URI=mongodb://localhost:27017/gallery
+    PORT=1111
+    MONGO_URI=mongodb://localhost:27017/imageapp
     CLOUDINARY_CLOUD_NAME=your_cloud_name
     CLOUDINARY_API_KEY=your_api_key
     CLOUDINARY_API_SECRET=your_api_secret
