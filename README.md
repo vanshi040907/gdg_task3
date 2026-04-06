@@ -3,7 +3,8 @@ GDG 2026- first task
 
 # 🖼️ Real-Time Upvote Gallery
 
-[cite_start]A dynamic MERN stack application that allows users to share images and engage with a global community through real-time interactions[cite: 1, 2]. [cite_start]This project focuses on seamless state synchronization across multiple clients using WebSockets[cite: 7].
+A dynamic MERN stack application that allows users to share images and engage with a global community through real-time interactions.
+This project focuses on seamless state synchronization across multiple clients using WebSockets.
 
 ---
 
