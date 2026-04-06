@@ -52,11 +52,11 @@ function Footer() {
                 <button className='upload btn' type="submit"><Upload
                 color={uploadActive ? 'green' : 'gray'}
                 fill={uploadActive ? 'green' : 'none'}/></button>
+            
+            </form>
             <Link to="/gallery"><button className='home btn' type="button" ><Home
             color={isActive('/gallery') ? 'white' : 'gray'}
             fill={isActive('/gallery') ? 'white' : 'none'}/></button></Link>
-            </form>
-            
             <Link to="/favorites"><button className='favorite btn'><Heart
             color={isActive('/favorites') ? 'white' : 'gray'}
             fill={isActive('/favorites') ? 'red' : 'none'}/></button></Link>
