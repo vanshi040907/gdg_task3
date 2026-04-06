@@ -8,22 +8,42 @@ function Login_page() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         console.log("email", email);
         console.log("Password:", password);
-        alert("Login Successful!");
+        /*alert("Login Successful!");
         axios.post("http://localhost:1111/login/enter" ,{
             email: email,
             password: password
         })
              .then(res => navigate("/gallery"))
-             .catch(err => console.log(err));
+             .catch(err => console.log(err));*/
+             try {
+    const res = await axios.post(
+      "http://localhost:1111/login/enter",
+      {
+        email,
+        password
+      },
+      {
+        withCredentials: true 
+      }
+    );
 
+    alert("Login Successful!");
+    navigate("/gallery");
 
-        
-          
+  } catch (err) {
+    if (err.response?.status === 401) {
+      alert("Invalid email or password ❌");
+    } else {
+      alert("Server error ⚠️");
+    }
+  }      
     };
+    handleSubmit();
+
 
     return (
         <div className="login-page">

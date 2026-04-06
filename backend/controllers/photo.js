@@ -10,37 +10,37 @@ require('dotenv').config();
     api_secret: process.env.CLOUDINARY_API_SECRET 
 });
 
-async function handlephotoupload(req,res) {
+async function handlephotoupload(req, res) {
     console.log("enter");
   try{
-    const filename = req.file.filename;
-    const filepath = req.file.path;
-    const cloudinaryresponse = await cloudinary.uploader.upload(filepath,{
-        folder:"cloud_folder"
-    })
-       
-    console.log(req.file);
-    console.log(cloudinaryresponse);
-    
-    
-    /*await Photo.create ({
-        photofilename: filename,
-    
-    });*/
-    await Photo.create ({
-        photofilename:cloudinaryresponse.secure_url ,
-    
-    });
+    if (!req.file) {
+            return res.status(400).json({ error: "No file received" });
+        }
+    const cloudinaryresponse = await new Promise((resolve, reject) => {
+            const stream = cloudinary.uploader.upload_stream(
+                { folder: "cloud_folder" },
+                (error, result) => {
+                    if (error) reject(error);
+                    else resolve(result);
+                }
+            );
+            stream.end(req.file.buffer); // ← use buffer, not path
+        });
 
-   
-    req.io.emit('photofile',cloudinaryresponse.secure_url );
-   
-     
-    return res.json({success:true});
+        console.log("Cloudinary URL:", cloudinaryresponse.secure_url);
+
+        await Photo.create({
+            photofilename: cloudinaryresponse.secure_url,
+        });
+
+        req.io.emit('photofile', cloudinaryresponse.secure_url);
+
+        return res.json({ success: true, url: cloudinaryresponse.secure_url });
+    
 }
 catch (error) {
         console.error("Upload failed:", error);
-        return res.status(500).send("Upload Error");
+        return res.status(500).json({ error: error.message });
     }
 }
 async function handlephotoshow(req,res) {
@@ -79,7 +79,22 @@ return res.json({
     });
 }
 
-module.exports = {handlephotoupload,handlephotoshow,handleupvote, handleupvoteshow};
+async function handleFavourites(req,res) {
+    const currentuser = req.user._id;
+    const photofav= await Photo.find({peopleupvote:currentuser});
+    console.log(photofav); 
+    return res.json(photofav);
+}
+
+async function handleprofile(req, res) {
+   const currentuser = req.user._id;
+   const profile = await User.findById(currentuser);
+   console.log(profile);
+   console.log("this is profile");
+   return res.json(profile);
+}
+
+module.exports = {handlephotoupload,handlephotoshow,handleupvote, handleupvoteshow, handleFavourites, handleprofile};
     
 
 

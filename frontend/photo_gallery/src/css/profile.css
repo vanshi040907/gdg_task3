@@ -1,0 +1,24 @@
+.details{
+
+}
+
+
+
+.box{
+    border: 2px solid white;
+    border-radius: 20px;
+    box-shadow: 2px 2px 15px rgba(255, 255, 255, 0.641);
+    width: 60vw;
+    min-width: 200px;
+}
+
+h2{
+    font-size: xx-large;
+}
+
+.area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

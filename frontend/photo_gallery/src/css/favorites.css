@@ -1,0 +1,83 @@
+.fav-container{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 30px;
+  grid-auto-rows: 1px;
+  padding: 16px;
+}
+
+@media (max-width: 1350px) {
+  .fav-container {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+ 
+@media (max-width: 1200px) {
+  .fav-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .fav-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+ 
+ 
+@media (max-width: 900px) {
+  .fav-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+ 
+@media (max-width: 600px) {
+  .fav-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.container{
+  padding: 7px;
+  border: 2px ridge white;
+  box-shadow: 0 4px 15px -3px rgba(255, 255, 255, 0.5);
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: transparent;
+  transition: transform 0.2s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+ width: 100%;
+break-inside: avoid;
+  justify-content: center;
+  align-self: start;
+  /* margin-right :5px; */
+}
+
+.container:hover {
+  transform: translateY(-5px);
+}
+
+.image{
+  border-radius: 15px;
+  border: 0.2px solid white;
+  width: 100%;
+  height: auto;         /* fill the card */
+  object-fit: cover;
+  display: block;       /* removes bottom gap under img */
+}
+
+.image_area {
+  position: relative;
+  /* aspect-ratio: 2/3; */
+  width: 100%;
+  overflow: hidden; 
+}
+
+@media (max-width: 768px) {
+  .container {
+    font-size: 0.9rem;
+  }
+}

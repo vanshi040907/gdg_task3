@@ -1,44 +1,68 @@
 import '../css/footer.css'
-import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload, faHouse, faHeart, faUser } from '@fortawesome/free-solid-svg-icons';
+import { useState } from "react";
+import { Link, useLocation } from 'react-router-dom';
+
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { io } from "socket.io-client";
-
+import {Heart, User, Home, Upload} from 'lucide-react'
 
 
 function Footer() {
     const [file , setfile] = useState(null);
-  
     const navigate = useNavigate();
-      const formdata = new FormData();
-      formdata.append("uploadedphoto",file)
+    const [uploadActive, setUploadActive] = useState(false);
       
+    const location = useLocation();
+    const isActive = (path) => location.pathname === path;
+
     const handleUpload = (e) =>{
            e.preventDefault();
-           axios.post("http://localhost:1111/upload" , formdata)
-             .then((res)=> console.log(res))
-             .catch(err => console.log(err));
-             navigate("/gallery")
+
+           if (!file) {
+            alert("Please select a file first!");
+            return;
+           }
+
+        setUploadActive(true);
+
+    const formdata = new FormData(); // ← MOVE INSIDE handler
+        formdata.append("uploadedphoto", file); // ← now file has the actual value
+
+        axios.post("http://localhost:1111/upload", formdata, {
+            headers: { "Content-Type": "multipart/form-data" } // ← add this
+        })
+        .then((res) => {
+            console.log("Upload success:", res);
+            setUploadActive(false);
+            navigate("/gallery");
+        })
+        .catch(err => console.log("Upload error:", err));
+        // setUploadActive(false);
     };
 
   
     return (
         <div className="footer">
-            
-           
             <form onSubmit={handleUpload}  encType="multipart/form-data">
-                   <input type="file"
-                          name="uploadedphoto"
-                          onChange={(e) => setfile(e.target.files[0])}/>
-                 <button className='upload btn'  type="submit" id ="send"><FontAwesomeIcon icon={faUpload} />Upload</button>
-            <Link to="/gallery"><button className='home btn'><FontAwesomeIcon icon={faHouse} /></button></Link>
+                <input 
+                type="file"
+                name="uploadedphoto"
+                onChange={(e) => setfile(e.target.files[0])}
+                />
+                <button className='upload btn' type="submit"><Upload
+                color={uploadActive ? 'green' : 'gray'}
+                fill={uploadActive ? 'green' : 'none'}/></button>
+            <Link to="/gallery"><button className='home btn' type="button" ><Home
+            color={isActive('/gallery') ? 'white' : 'gray'}
+            fill={isActive('/gallery') ? 'white' : 'none'}/></button></Link>
             </form>
             
-            <Link to="/favorites"><button className='favorite btn'><FontAwesomeIcon icon={faHeart} /></button></Link>
-            <Link to="/profile"><button className='profie btn'><FontAwesomeIcon icon={faUser} /></button></Link>
+            <Link to="/favorites"><button className='favorite btn'><Heart
+            color={isActive('/favorites') ? 'white' : 'gray'}
+            fill={isActive('/favorites') ? 'red' : 'none'}/></button></Link>
+            <Link to="/profile"><button className='profie btn'><User
+            color={isActive('/profile') ? 'white' : 'gray'}
+            fill={isActive('/profile') ? 'white' : 'none'}/></button></Link>
         </div>
     
     )

@@ -19,3 +19,4 @@ function Image_box(){
 }
 
 export default Image_box
+

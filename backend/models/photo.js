@@ -3,7 +3,6 @@ const photoschema = new mongoose.Schema({
     photofilename : {
         type:String,
         required:true,
-        unique:true
     },
      peopleupvote : [ {
         type:mongoose.Schema.Types.ObjectId,
