@@ -42,7 +42,7 @@ function Login_page() {
     }
   }      
     };
-    handleSubmit();
+    
 
 
     return (

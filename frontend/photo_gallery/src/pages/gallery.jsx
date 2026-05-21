@@ -131,7 +131,7 @@ function Gallery() {
                           background: (p.count >= 3) 
                           ? 'linear-gradient(to right, rgb(50, 20, 86, 1), rgb(66, 1, 86, 1), rgb(85, 1, 1, 1))' 
                           : 'transparent',
-                          boxShadow:'2px, 2px, 10px, rgba(255,255,255,1)',
+                          boxShadow:'2px 2px 10px rgba(255,255,255,1)',
                           transition: 'background 0.5s ease',
                           gridRowEnd: `span ${p.span || 1}`
 }}>
