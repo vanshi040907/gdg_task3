@@ -16,7 +16,7 @@ function Signup() {
         e.preventDefault();
         console.log(username, email, password);
         alert("acount created!");
-        axios.post("http://localhost:1111/signin/enter" ,
+        axios.post("https://gdg-task3-backend.onrender.com/signin/enter" ,
             {
                 username,
                 email,
