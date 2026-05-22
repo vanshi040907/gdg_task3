@@ -8,7 +8,7 @@ function Favourites() {
   useEffect(() => {
     const fetchFavourites = async () => {
       try {
-        const res = await fetch("http://localhost:1111/favourites", {
+        const res = await fetch("https://gdg-task3-backend.onrender.com/favourites", {
           method: "GET",
           credentials: "include",
         });
