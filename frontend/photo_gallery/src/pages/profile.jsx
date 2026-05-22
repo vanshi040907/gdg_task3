@@ -8,7 +8,7 @@ function Profile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch("http://localhost:1111/profile", {
+        const res = await fetch("https://gdg-task3-backend.onrender.com/profile", {
           method: "GET",
           credentials: "include", // important for cookies/session
         });
