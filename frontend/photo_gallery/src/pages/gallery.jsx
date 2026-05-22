@@ -7,11 +7,11 @@ import "../css/image_box.css"
 import { motion, AnimatePresence } from 'framer-motion';
 
 
-const socket = io("http://localhost:1111");
+const socket = io("https://gdg-task3-backend.onrender.com");
 
 function Gallery() {
     const [photos, setPhotos] = useState([]);
-    const BASE_URL = "http://localhost:1111";
+    const BASE_URL = "https://gdg-task3-backend.onrender.com";
     const [spinningPhotos, setSpinningPhotos] = useState({}); 
     const [showHeart, setShowHeart] = useState(false); 
 
