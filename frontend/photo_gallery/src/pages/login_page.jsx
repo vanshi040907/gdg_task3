@@ -13,7 +13,7 @@ function Login_page() {
         console.log("email", email);
         console.log("Password:", password);
         /*alert("Login Successful!");
-        axios.post("http://localhost:1111/login/enter" ,{
+        axios.post("https://gdg-task3-backend.onrender.com/login/enter" ,{
             email: email,
             password: password
         })
@@ -21,7 +21,7 @@ function Login_page() {
              .catch(err => console.log(err));*/
              try {
     const res = await axios.post(
-      "http://localhost:1111/login/enter",
+      "https://gdg-task3-backend.onrender.com/login/enter",
       {
         email,
         password
