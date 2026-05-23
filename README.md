@@ -1,6 +1,6 @@
 # gdg_task3
-GDG 2026- first task
-https://gdg-task3-backend.onrender.com
+GDG 2026- first task                                                                                                                                                                                                     
+https://gdg-task3-backend.onrender.com                                                                                                                                                                               gdg-task3-jsb9h97d9-roysaumya767-codes-projects.vercel.app
 
 # 🖼️ Real-Time Upvote Gallery
 
