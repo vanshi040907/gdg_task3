@@ -27,7 +27,7 @@ connectmongoose("mongodb://127.0.0.1:27017/imageapp");
 
 app.use(cors(
     {
-    origin: "http://localhost:5173",  // your React frontend URL
+    origin: "gdg-task3-jsb9h97d9-roysaumya767-codes-projects.vercel.app",  // your React frontend URL
     credentials: true
 }));
 
